@@ -3,7 +3,6 @@
 /*
  complete BT--In a complete binary tree, every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive at the last level h.
  */
-// using BST
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -19,6 +18,7 @@
  *     }
  * }
  */
+// using BST
 class Solution {
 
     public boolean isCompleteTree(TreeNode root) {
@@ -43,5 +43,33 @@ class Solution {
         }
 
         return true;
+    }
+}
+
+// using dfs
+class Solution {
+    // using dfs
+
+    int countNodes(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + countNodes(root.left) + countNodes(root.right);
+    }
+
+    boolean dfs(TreeNode root, int i, int totalNodes) {
+        if (root == null) {
+            return true;
+        }
+        if (i > totalNodes) {
+            return false;
+        }
+        return dfs(root.left, 2 * i, totalNodes) && dfs(root.right, 2 * i + 1, totalNodes);
+    }
+
+    public boolean isCompleteTree(TreeNode root) {
+        int totalNodes = countNodes(root);
+        int i = 1;
+        return dfs(root, i, totalNodes);
     }
 }
