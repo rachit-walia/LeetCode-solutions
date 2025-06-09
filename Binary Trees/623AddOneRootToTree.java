@@ -30,7 +30,7 @@ class Solution {
 
             root.left.left = leftTemp;
             root.right.right = rightTemp;
-            int b=0;
+
             return root;
         }
         root.left = add(root.left, val, depth, current + 1);
@@ -50,4 +50,3 @@ class Solution {
 
     }
 }
-
