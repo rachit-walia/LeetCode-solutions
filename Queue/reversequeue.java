@@ -20,3 +20,5 @@ public class reversequeue {
         System.out.println(q);
     }
 }
+
+// queue
